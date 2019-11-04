@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Teste Android TCS</string>
+    <string name="loginBank">Bank</string>
+    <string name="loginUser">Usuário</string>
+    <string name="loginPassword">Senha</string>
+    <string name="loginText">Login</string>
+    <string name="bankStatementAccount">Conta</string>
+    <string name="bankStatementBalance">Saldo</string>
+    <string name="bankStatementRecent">Recentes</string>
+    <string name="userEmpty">Favor preencher o nome de usuário.</string>
+    <string name="passwordEmpty">Favor preencher a senha.</string>
+    <string name="nvalidUser">Usuário inválido.</string>
+    <string name="invalidPassword">A senha deve conter pelo menos uma letra maiúscula, um caracter especial e um caracter alfa numérico</string>
+</resources>
