@@ -6,9 +6,10 @@ import androidx.room.*
     tableName = "login"
 )
 data class Login(
-    @ColumnInfo(name = "user") val user: String,
-
-    @ColumnInfo(name = "password") val password: String
+    @ColumnInfo(name = "user")
+    val user: String,
+    @ColumnInfo(name = "password")
+    val password: String
 
 ) {
     @PrimaryKey(autoGenerate = true)

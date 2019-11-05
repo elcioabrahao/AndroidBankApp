@@ -14,10 +14,11 @@ import com.trantordev.androidbankapp.workers.UserSeedingDatabaseWorker
 /**
  * The Room database for this app
  */
-@Database(entities = [Login::class], version = 1, exportSchema = false)
+@Database(entities = [Login::class, ClientAccountInfo::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun loginDao(): LoginDao
+    abstract fun clientAccountInfoDao(): ClientAccountInfoDao
 
     companion object {
 
