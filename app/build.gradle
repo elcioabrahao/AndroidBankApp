@@ -53,6 +53,7 @@ dependencies {
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
     implementation "androidx.viewpager2:viewpager2:$rootProject.viewPagerVersion"
     implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
