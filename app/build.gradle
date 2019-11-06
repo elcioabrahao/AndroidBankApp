@@ -60,4 +60,5 @@ dependencies {
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxtestextjunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.androidxexpresso"
+    //kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycleVersion"
 }

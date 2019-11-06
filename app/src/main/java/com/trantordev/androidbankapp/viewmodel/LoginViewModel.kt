@@ -6,7 +6,8 @@ import com.trantordev.androidbankapp.data.Login
 import com.trantordev.androidbankapp.data.LoginRepository
 import com.trantordev.androidbankapp.ui.LoginListener
 
-class LoginViewModel internal constructor(loginRepository: LoginRepository): ViewModel() {
+
+class LoginViewModel internal constructor(private val loginR: LoginRepository): ViewModel() {
 
     var user : String ? = null
     var password : String ? = null
@@ -21,7 +22,7 @@ class LoginViewModel internal constructor(loginRepository: LoginRepository): Vie
             return
         }else{
             // fetching live data from UserRepository
-            val loginResponse =  loginRepository.getUserInfo(Login(user!!,password!!))
+            val loginResponse =  loginR.getUserInfo(Login(user!!,password!!))
 
             // Success listener
             loginListener?.onSuccess(loginResponse)

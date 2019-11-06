@@ -11,9 +11,6 @@ import androidx.work.WorkManager
 import com.trantordev.androidbankapp.util.DATABASE_NAME
 import com.trantordev.androidbankapp.workers.UserSeedingDatabaseWorker
 
-/**
- * The Room database for this app
- */
 @Database(entities = [Login::class, ClientAccountInfo::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
