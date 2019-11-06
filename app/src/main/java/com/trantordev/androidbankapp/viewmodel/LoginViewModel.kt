@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.trantordev.androidbankapp.data.Login
 import com.trantordev.androidbankapp.data.LoginRepository
 import com.trantordev.androidbankapp.ui.LoginListener
+import kotlinx.coroutines.runBlocking
 
 
 class LoginViewModel internal constructor(private val loginR: LoginRepository): ViewModel() {
@@ -21,11 +22,10 @@ class LoginViewModel internal constructor(private val loginR: LoginRepository): 
             loginListener?.onFailure("Incorrect email or password.")
             return
         }else{
-            // fetching live data from UserRepository
-            val loginResponse =  loginR.getUserInfo(Login(user!!,password!!))
-
-            // Success listener
-            loginListener?.onSuccess(loginResponse)
+            runBlocking {
+                val loginResponse =  loginR.getUserInfo(Login(user!!,password!!))
+                loginListener?.onSuccess(loginResponse)
+            }
 
         }
 

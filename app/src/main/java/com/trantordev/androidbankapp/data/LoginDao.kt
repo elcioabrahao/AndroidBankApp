@@ -12,7 +12,7 @@ interface LoginDao {
     fun isCached(user: String, password: String): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUserInfo(login: Login): Long
+    suspend fun insertUserInfo(login: Login): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(users: List<Login>)

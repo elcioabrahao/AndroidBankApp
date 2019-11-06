@@ -13,7 +13,7 @@ interface ClientAccountInfoDao {
     fun getAccountInfo(user: String): LiveData<ClientAccountInfo>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertClientAccountInfo(clientAccountInfo: ClientAccountInfo): Long
+    fun insertClientAccountInfo(clientAccountInfo: ClientAccountInfo)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(clients: List<ClientAccountInfo>)
