@@ -20,4 +20,12 @@
     <item name="android:textColor">@color/colorSecundary</item>
     </style>
 
+    <style name="HelveticaNeueLight" parent="android:TextAppearance">
+        <item name="fontPath">fonts/HelveticaNeue-Light.ttf</item>
+    </style>
+
+    <style name="HelveticaNeue" parent="android:TextAppearance">
+        <item name="fontPath">fonts/helvetica-neue.ttf</item>
+    </style>
+
 </resources>
