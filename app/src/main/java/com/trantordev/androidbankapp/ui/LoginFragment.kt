@@ -1,5 +1,6 @@
 package com.trantordev.androidbankapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -53,9 +54,9 @@ class LoginFragment : Fragment(), LoginListener {
             activity!!.toast(it)
             Log.i(TAG, "Login response via Live Data = $it")
             // sending user to tab home activity
-//            val intent = Intent(this, TabActivity::class.java)
-//            startActivity(intent)
-//            finish()
+            val intent = Intent(this.activity, StatementActivity::class.java)
+            startActivity(intent)
+            this.activity!!.finish()
 
         })    }
 

@@ -1,10 +1,13 @@
-package com.trantordev.androidbankapp.data
+package com.trantordev.androidbankapp.data.network
 
+import com.trantordev.androidbankapp.data.model.ClientAccountInfo
+import com.trantordev.androidbankapp.data.model.ClientAccountStatements
 import retrofit2.Call
 
 class ApiServices {
 
-    var service: WebServicesAPI = RetrofitCall().getCall().create(WebServicesAPI::class.java)
+    var service: WebServicesAPI = RetrofitCall()
+        .getCall().create(WebServicesAPI::class.java)
 
     fun getAccountInfo(userId: Int): Call<ClientAccountStatements> {
         val url = "statements/$userId"
@@ -21,8 +24,10 @@ class ApiServices {
         @Volatile private var instance: ApiServices? = null
 
         fun getInstance() =
-            instance ?: synchronized(this) {
-                instance ?: ApiServices().also { instance = it }
+            instance
+                ?: synchronized(this) {
+                instance
+                    ?: ApiServices().also { instance = it }
             }
     }
 }

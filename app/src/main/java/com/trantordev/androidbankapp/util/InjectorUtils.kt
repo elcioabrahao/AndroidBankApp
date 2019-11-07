@@ -1,11 +1,8 @@
 package com.trantordev.androidbankapp.util
 
-import android.app.Application
 import android.content.Context
-import android.content.ContextWrapper
-import androidx.lifecycle.LifecycleOwner
-import com.trantordev.androidbankapp.data.ApiServices
-import com.trantordev.androidbankapp.data.AppDatabase
+import com.trantordev.androidbankapp.data.network.ApiServices
+import com.trantordev.androidbankapp.data.database.AppDatabase
 import com.trantordev.androidbankapp.data.LoginRepository
 import com.trantordev.androidbankapp.viewmodel.LoginViewModelFactory
 

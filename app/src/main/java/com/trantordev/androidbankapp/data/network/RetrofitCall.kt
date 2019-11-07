@@ -1,4 +1,4 @@
-package com.trantordev.androidbankapp.data
+package com.trantordev.androidbankapp.data.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

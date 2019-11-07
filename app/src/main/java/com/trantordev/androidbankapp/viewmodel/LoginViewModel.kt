@@ -1,11 +1,9 @@
 package com.trantordev.androidbankapp.viewmodel
 
-import android.app.Application
 import android.view.View
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.trantordev.androidbankapp.R
-import com.trantordev.androidbankapp.data.Login
+import com.trantordev.androidbankapp.data.model.Login
 import com.trantordev.androidbankapp.data.LoginRepository
 import com.trantordev.androidbankapp.ui.LoginListener
 import com.trantordev.androidbankapp.util.ValidationUtils
@@ -51,7 +49,12 @@ class LoginViewModel internal constructor(private val loginR: LoginRepository
         }
 
         runBlocking {
-            val loginResponse = loginR.getUserInfo(Login(user!!, password!!))
+            val loginResponse = loginR.getUserInfo(
+                Login(
+                    user!!,
+                    password!!
+                )
+            )
             loginListener?.onSuccess(loginResponse)
         }
 

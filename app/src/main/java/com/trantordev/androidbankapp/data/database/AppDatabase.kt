@@ -1,4 +1,4 @@
-package com.trantordev.androidbankapp.data
+package com.trantordev.androidbankapp.data.database
 
 import android.content.Context
 import androidx.room.Database
@@ -8,6 +8,8 @@ import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import com.trantordev.androidbankapp.data.model.Login
+import com.trantordev.androidbankapp.data.model.ClientAccountInfo
 import com.trantordev.androidbankapp.util.DATABASE_NAME
 import com.trantordev.androidbankapp.workers.UserSeedingDatabaseWorker
 
@@ -23,8 +25,12 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile private var instance: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase {
-            return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context).also { instance = it }
+            return instance
+                ?: synchronized(this) {
+                instance
+                    ?: buildDatabase(
+                        context
+                    ).also { instance = it }
             }
         }
 

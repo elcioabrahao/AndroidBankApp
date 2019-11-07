@@ -23,8 +23,8 @@ import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
-import com.trantordev.androidbankapp.data.AppDatabase
-import com.trantordev.androidbankapp.data.Login
+import com.trantordev.androidbankapp.data.database.AppDatabase
+import com.trantordev.androidbankapp.data.model.Login
 import com.trantordev.androidbankapp.util.USER_DATA_FILENAME
 
 import kotlinx.coroutines.coroutineScope

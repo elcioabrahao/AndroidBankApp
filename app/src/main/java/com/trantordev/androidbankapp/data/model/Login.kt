@@ -1,4 +1,4 @@
-package com.trantordev.androidbankapp.data
+package com.trantordev.androidbankapp.data.model
 
 import androidx.room.*
 

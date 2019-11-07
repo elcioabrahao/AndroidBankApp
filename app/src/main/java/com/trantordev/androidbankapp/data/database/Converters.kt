@@ -1,4 +1,4 @@
-package com.trantordev.androidbankapp.data
+package com.trantordev.androidbankapp.data.database
 
 import androidx.room.TypeConverter
 import java.util.Calendar

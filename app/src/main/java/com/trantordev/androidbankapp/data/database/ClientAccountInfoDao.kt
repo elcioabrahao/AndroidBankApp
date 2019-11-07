@@ -1,7 +1,8 @@
-package com.trantordev.androidbankapp.data
+package com.trantordev.androidbankapp.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.trantordev.androidbankapp.data.model.ClientAccountInfo
 
 @Dao
 interface ClientAccountInfoDao {
