@@ -8,7 +8,7 @@ object ValidationUtils {
     )
     private val NUMBER = Regex("[-+]?\\d*\\.?\\d+")
     private val PASSWORD =
-        Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+        Regex("(?=^.{6,255}\$)((?=.*\\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*")
 
 
     fun isValidCPF(cpf: String): Boolean {

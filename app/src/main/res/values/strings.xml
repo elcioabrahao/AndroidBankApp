@@ -11,5 +11,5 @@
     <string name="validation_user_cpf_must_be_valid">Usuário deve ser um CPF válido</string>
     <string name="validation_user_email_must_be_valid">Usuário deve ser um EMAIL válido</string>
     <string name="validation_password_must_not_be_empity">Senha não pode estar vazia</string>
-    <string name="validation_password_valid">Senha não deve conter pelo menos uma letra maiúscula, uma letra minúcula, um número e um caracter especial</string>
+    <string name="validation_password_valid">Senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caracter especial</string>
 </resources>

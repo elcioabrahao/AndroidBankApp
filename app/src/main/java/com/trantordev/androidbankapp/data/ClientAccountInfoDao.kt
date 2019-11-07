@@ -20,4 +20,7 @@ interface ClientAccountInfoDao {
 
     @Delete
     suspend fun deleteClientAccountInfo(clientAccountInfo: ClientAccountInfo)
+
+    @Query("delete from client")
+    suspend fun deleteAll()
 }

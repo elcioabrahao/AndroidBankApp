@@ -19,4 +19,7 @@ interface LoginDao {
 
     @Delete
     suspend fun deleteUserInfo(login: Login)
+
+    @Query("delete from login")
+    suspend fun deleteAll()
 }

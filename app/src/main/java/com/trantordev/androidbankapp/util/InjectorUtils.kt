@@ -15,16 +15,10 @@ object InjectorUtils {
 
     private fun getLoginRepository(context: Context): LoginRepository {
 
-        var ctx: Context = context
-
-        while (ctx !is LifecycleOwner) {
-            ctx = (context as ContextWrapper).baseContext
-        }
         return LoginRepository.getInstance(
             AppDatabase.getInstance(context.applicationContext).loginDao(),
             AppDatabase.getInstance(context.applicationContext).clientAccountInfoDao(),
-            ApiServices.getInstance(),
-            ctx
+            ApiServices.getInstance()
         )
     }
 
