@@ -41,7 +41,7 @@ class LoginRepository private constructor(
     suspend fun getUserInfo(login: Login): LiveData<String> {
 
         val loginResponse = MutableLiveData<String>()
-        Log.d("DATABASEERROR",""+isCached(login))
+
         if (isCached(login) == true) {
             loginResponse.value = "LOGGED DATABASE"
             return loginResponse
@@ -59,8 +59,10 @@ class LoginRepository private constructor(
                 ) {
                     if (response.isSuccessful) {
                         loginResponse.value = "LOGGED API"
-                        GlobalScope.async { saveClientrInfo(response.body()!!) }
-
+                        GlobalScope.async {
+                            saveClientrInfo(response.body()!!)
+                            saveUserInfo(login)
+                        }
                     } else {
                         loginResponse.value = response.errorBody()?.string()
                     }
