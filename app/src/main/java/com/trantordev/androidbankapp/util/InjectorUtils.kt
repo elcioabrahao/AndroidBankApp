@@ -1,5 +1,6 @@
 package com.trantordev.androidbankapp.util
 
+import android.app.Application
 import android.content.Context
 import android.content.ContextWrapper
 import androidx.lifecycle.LifecycleOwner
@@ -32,6 +33,7 @@ object InjectorUtils {
     fun provideLoginViewModelFactory(
         context: Context
     ): LoginViewModelFactory {
+
         val repository = getLoginRepository(context)
         return LoginViewModelFactory(repository)
     }

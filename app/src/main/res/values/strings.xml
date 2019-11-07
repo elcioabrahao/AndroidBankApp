@@ -7,8 +7,9 @@
     <string name="bankStatementAccount">Conta</string>
     <string name="bankStatementBalance">Saldo</string>
     <string name="bankStatementRecent">Recentes</string>
-    <string name="userEmpty">Favor preencher o nome de usuário.</string>
-    <string name="passwordEmpty">Favor preencher a senha.</string>
-    <string name="nvalidUser">Usuário inválido.</string>
-    <string name="invalidPassword">A senha deve conter pelo menos uma letra maiúscula, um caracter especial e um caracter alfa numérico</string>
+    <string name="validation_user_not_empity">Usuário não pode estar vazio</string>
+    <string name="validation_user_cpf_must_be_valid">Usuário deve ser um CPF válido</string>
+    <string name="validation_user_email_must_be_valid">Usuário deve ser um EMAIL válido</string>
+    <string name="validation_password_must_not_be_empity">Senha não pode estar vazia</string>
+    <string name="validation_password_valid">Senha não deve conter pelo menos uma letra maiúscula, uma letra minúcula, um número e um caracter especial</string>
 </resources>

@@ -59,8 +59,8 @@ class LoginFragment : Fragment(), LoginListener {
 
         })    }
 
-    override fun onFailure(message: String) {
-        activity!!.toast(message)
+    override fun onFailure(message: Int) {
+        activity!!.toast(context!!.getString(message))
     }
 
     companion object{
