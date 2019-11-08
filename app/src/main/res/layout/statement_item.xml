@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="statement"
+            type="com.trantordev.androidbankapp.data.model.AccountStatement"/>
+    </data>
+
+<androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:layout_margin="4dp"
+    android:onClick="@{clickListener}"
     android:layout_marginBottom="16dp"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="4dp">
@@ -16,12 +28,12 @@
 
         <TextView
             style="@style/HelveticaNeue"
-            android:id="@+id/txtTitleValue"
+            android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="@{statement.title}"
             android:textSize="16sp"
             android:textColor="@color/statement_gray"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,12 +41,12 @@
 
         <TextView
             style="@style/HelveticaNeue"
-            android:id="@+id/txtDateValue"
+            android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="@{statement.date}"
             android:textSize="12sp"
             android:textColor="@color/statement_gray"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,28 +54,29 @@
 
         <TextView
             style="@style/HelveticaNeue"
-            android:id="@+id/txtDescValue"
+            android:id="@+id/descriptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginStart="8dp"
-            android:text="TextView"
-            android:textSize="16dp"
+            android:text="@{statement.desc}"
+            android:textSize="16sp"
             android:textColor="@color/statement_dark_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             style="@style/HelveticaNeueLight"
-            android:id="@+id/txtPriceValue"
+            android:id="@+id/priceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="8dp"
-            android:text="TextView"
-            android:textSize="20dp"
+            android:text="@{statement.value.toString()}"
+            android:textSize="20sp"
             android:textColor="@color/statement_dark_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
+</layout>

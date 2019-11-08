@@ -7,9 +7,15 @@
     <string name="bankStatementAccount">Conta</string>
     <string name="bankStatementBalance">Saldo</string>
     <string name="bankStatementRecent">Recentes</string>
+    <string name="menu_info">Sobre</string>
     <string name="validation_user_not_empity">Usuário não pode estar vazio</string>
     <string name="validation_user_cpf_must_be_valid">Usuário deve ser um CPF válido</string>
     <string name="validation_user_email_must_be_valid">Usuário deve ser um EMAIL válido</string>
     <string name="validation_password_must_not_be_empity">Senha não pode estar vazia</string>
     <string name="validation_password_valid">Senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caracter especial</string>
+    <string name="about_title">Elcio Abrahão, November/2019, TCS</string>
+    <string name="about_desc">Um app de teste com Google Jetpack e MVVM.</string>
+    <string name="about_color">#3B48EE</string>
+    <string name="about_positiv_text">Ok</string>
+    <string name="about_negative_text">Fechar</string>
 </resources>

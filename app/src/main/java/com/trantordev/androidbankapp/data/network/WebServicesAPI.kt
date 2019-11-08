@@ -19,6 +19,6 @@ interface WebServicesAPI {
     ): Call<ClientAccountInfo>
 
     @GET
-    fun getClientStatements(@Url url:String):Call<ClientAccountStatements>
+    suspend fun getClientStatements(@Url url:String):ClientAccountStatements
 
 }
