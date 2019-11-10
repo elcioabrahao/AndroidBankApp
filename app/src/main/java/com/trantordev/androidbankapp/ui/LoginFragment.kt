@@ -30,17 +30,9 @@ class LoginFragment : Fragment(), LoginListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         binding = LoginFragmentBinding.inflate(inflater, container, false)
-        //val adapter = GardenPlantingAdapter()
-        //binding.gardenList.adapter = adapter
-
         binding.viewmodel = viewModel
-
         viewModel.loginListener = this
-
-        //subscribeUi(adapter, binding)
         return binding.root
     }
 
@@ -53,7 +45,6 @@ class LoginFragment : Fragment(), LoginListener {
         loginResponse.observe(this, Observer {
             activity!!.toast(it)
             Log.i(TAG, "Login response via Live Data = $it")
-            // sending user to tab home activity
             val intent = Intent(this.activity, StatementActivity::class.java)
             startActivity(intent)
             this.activity!!.finish()

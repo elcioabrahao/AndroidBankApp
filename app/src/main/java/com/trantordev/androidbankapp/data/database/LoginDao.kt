@@ -12,6 +12,9 @@ interface LoginDao {
     @Query("SELECT EXISTS(SELECT 1 FROM login WHERE user = :user and password = :password LIMIT 1)")
     fun isCached(user: String, password: String): Boolean
 
+    @Query("SELECT * FROM login LIMIT 1")
+    fun getLogedUser(): Login
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUserInfo(login: Login): Long
 

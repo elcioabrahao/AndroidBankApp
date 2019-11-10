@@ -17,7 +17,7 @@ import com.trantordev.androidbankapp.viewmodel.StatementViewModel
 class StatementFragment : Fragment() {
 
     private val viewModel: StatementViewModel by viewModels {
-        InjectorUtils.provideStatementListViewModelFactory()
+        InjectorUtils.provideStatementListViewModelFactory(requireContext())
     }
 
     override fun onCreateView(

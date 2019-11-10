@@ -55,7 +55,11 @@ class LoginViewModel internal constructor(private val loginR: LoginRepository
                     password!!
                 )
             )
-            loginListener?.onSuccess(loginResponse)
+            if(loginResponse.value.equals("OK")){
+                loginListener?.onSuccess(loginResponse)
+            }else{
+                loginListener?.onFailure(R.string.api_authnentication_error)
+            }
         }
 
 

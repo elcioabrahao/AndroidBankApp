@@ -18,4 +18,5 @@
     <string name="about_color">#3B48EE</string>
     <string name="about_positiv_text">Ok</string>
     <string name="about_negative_text">Fechar</string>
+    <string name="api_authnentication_error">Falha na autenticação do usuário</string>
 </resources>

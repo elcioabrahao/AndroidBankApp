@@ -10,8 +10,8 @@ interface ClientAccountInfoDao {
     @Query("SELECT * FROM client")
     fun getAllClientsAccountInfo(): LiveData<List<ClientAccountInfo>>
 
-    @Query("SELECT * FROM client WHERE userId = :user LIMIT 1")
-    fun getAccountInfo(user: String): LiveData<ClientAccountInfo>
+    @Query("SELECT * FROM client WHERE userId = :userId LIMIT 1")
+    suspend fun getAccountInfo(userId: Long): ClientAccountInfo
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertClientAccountInfo(clientAccountInfo: ClientAccountInfo)

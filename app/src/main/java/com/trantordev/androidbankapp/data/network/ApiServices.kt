@@ -11,13 +11,7 @@ class ApiServices {
     var service: WebServicesAPI = RetrofitCall()
         .getCall().create(WebServicesAPI::class.java)
 
-    fun authenticate(user: String, password: String): Call<ClientAccountInfo>{
-        return service.authenticate(user,password)
-    }
-
-    companion object {
-
-        // For Singleton instantiation
+     companion object {
         @Volatile private var instance: ApiServices? = null
 
         fun getInstance() =

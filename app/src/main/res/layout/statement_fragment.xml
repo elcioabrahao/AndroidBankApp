@@ -3,13 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <data>
-
         <variable
             name="viewmodel"
             type="com.trantordev.androidbankapp.viewmodel.StatementViewModel" />
-
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +35,7 @@ tools:context=".ui.StatementFragment">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16dp"
-            android:text="Teste Teste Teste"
+            android:text="@{viewmodel.clientInfo.name}"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/textsize_25sp"
             android:accessibilityHeading="true"
@@ -71,7 +68,7 @@ tools:context=".ui.StatementFragment">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8dp"
-            android:text="4774 / 01.123456-7"
+            android:text="@{viewmodel.clientInfo.bankAccount}"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/textsize_25sp"
             android:accessibilityHeading="true"
@@ -96,7 +93,7 @@ tools:context=".ui.StatementFragment">
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8dp"
             android:paddingBottom="@dimen/margin_16dp"
-            android:text="R$ 6.533,44"
+            android:text="@{viewmodel.clientInfo.balance.toString()}"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/textsize_25sp"
             android:accessibilityHeading="true"

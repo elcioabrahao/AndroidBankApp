@@ -21,8 +21,11 @@ object InjectorUtils {
         )
     }
 
-    private fun getStatementRepository(): StatementRepository {
-        return StatementRepository.getInstance(ApiServices.getInstance())
+    private fun getStatementRepository(context: Context): StatementRepository {
+        return StatementRepository.getInstance(
+            ApiServices.getInstance(),
+            AppDatabase.getInstance(context.applicationContext).loginDao(),
+            AppDatabase.getInstance(context.applicationContext).clientAccountInfoDao())
     }
 
     fun provideLoginViewModelFactory(
@@ -33,8 +36,8 @@ object InjectorUtils {
         return LoginViewModelFactory(repository)
     }
 
-    fun provideStatementListViewModelFactory(): StatementViewModelFactory {
-        val repository = getStatementRepository()
+    fun provideStatementListViewModelFactory(context: Context): StatementViewModelFactory {
+        val repository = getStatementRepository(context)
         return StatementViewModelFactory(repository)
     }
 }

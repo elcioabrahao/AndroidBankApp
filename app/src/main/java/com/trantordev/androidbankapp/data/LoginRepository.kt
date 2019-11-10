@@ -1,10 +1,12 @@
 package com.trantordev.androidbankapp.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.trantordev.androidbankapp.data.database.ClientAccountInfoDao
 import com.trantordev.androidbankapp.data.database.LoginDao
 import com.trantordev.androidbankapp.data.model.ClientAccountInfo
+import com.trantordev.androidbankapp.data.model.ClientAccountInfoResponse
 import com.trantordev.androidbankapp.data.model.Login
 import com.trantordev.androidbankapp.data.network.ApiServices
 import kotlinx.coroutines.GlobalScope
@@ -21,7 +23,7 @@ class LoginRepository private constructor(
 
     suspend fun isCached(login: Login): Boolean {
         return GlobalScope.async {
-            loginDao.isCached(login.user,login.password)
+            loginDao.isCached(login.user, login.password)
         }.await()
     }
 
@@ -34,44 +36,53 @@ class LoginRepository private constructor(
             return loginResponse
         } else {
 
-            apiServices.authenticate(login.user, login.password).enqueue(object :
-                Callback<ClientAccountInfo> {
-                override fun onFailure(call: Call<ClientAccountInfo>, t: Throwable) {
-                    loginResponse.value = t.message
-                }
+            val response: ClientAccountInfoResponse
+            try{
 
-                override fun onResponse(
-                    call: Call<ClientAccountInfo>,
-                    response: Response<ClientAccountInfo>
-                ) {
-                    if (response.isSuccessful) {
-                        loginResponse.value = "LOGGED API"
-                        GlobalScope.async {
-                            saveClientrInfo(response.body()!!)
-                            saveUserInfo(login)
-                        }
-                    } else {
-                        loginResponse.value = response.errorBody()?.string()
+            response = authenticate(login)
+                if(response.clientAccountInfo != null){
+                    GlobalScope.async {
+                        saveClientrInfo(response.clientAccountInfo)
+                        saveUserInfo(login)
+                    }
+                    loginResponse.value = "OK"
+                }else{
+                    if(response.error != null){
+                        loginResponse.value = response.error.message
                     }
                 }
-            })
+            } catch (e: Exception) {
+                loginResponse.value = "Erro na autenticação de usuário"
+            }
+
             return loginResponse
         }
 
     }
 
-    suspend fun saveUserInfo(login: Login){
-         GlobalScope.async {
-             loginDao.deleteAll()
+    suspend fun authenticate(login: Login): ClientAccountInfoResponse {
+
+        Log.d("STATEMENTS","ANTES CHAMADA" )
+        val c: ClientAccountInfoResponse =  apiServices.service.authenticate(login.user, login.password)
+        Log.d("STATEMENTS","DEPOIS CHAMADA"+c.toString() )
+        return c
+    }
+
+
+    suspend fun saveUserInfo(login: Login) {
+        GlobalScope.async {
+            loginDao.deleteAll()
             loginDao.insertUserInfo(login)
         }.await()
 
     }
 
-    suspend fun saveClientrInfo(clientAccountInfo: ClientAccountInfo){
+    suspend fun saveClientrInfo(clientAccountInfo: ClientAccountInfo) {
         GlobalScope.async {
             clientAccountInfoDao.deleteAll()
             clientAccountInfoDao.insertClientAccountInfo(clientAccountInfo)
+            val clientAccountInfo = clientAccountInfoDao.getAccountInfo(1)
+            Log.d("STATEMENTS","CLIENTE GRAVADO: "+clientAccountInfo.toString())
         }.await()
     }
 
