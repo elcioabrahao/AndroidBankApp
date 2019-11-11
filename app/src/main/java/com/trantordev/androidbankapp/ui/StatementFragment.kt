@@ -14,7 +14,7 @@ import com.trantordev.androidbankapp.databinding.StatementFragmentBinding
 import com.trantordev.androidbankapp.util.InjectorUtils
 import com.trantordev.androidbankapp.viewmodel.StatementViewModel
 
-class StatementFragment : Fragment() {
+class StatementFragment : Fragment(), StatementListener {
 
     private val viewModel: StatementViewModel by viewModels {
         InjectorUtils.provideStatementListViewModelFactory(requireContext())
@@ -30,7 +30,9 @@ class StatementFragment : Fragment() {
         Log.d("STATEMENTS"," Esta na fragment")
         val adapter = StatementAdapter()
         binding.statementList.adapter = adapter
-        subscribeUi(adapter)
+        binding.viewmodel = viewModel
+        viewModel.statementListener = this
+        subscribeUi(adapter,binding)
 
         setHasOptionsMenu(true)
         return binding.root
@@ -50,12 +52,22 @@ class StatementFragment : Fragment() {
         }
     }
 
-    private fun subscribeUi(adapter: StatementAdapter) {
+    private fun subscribeUi(adapter: StatementAdapter, binding: StatementFragmentBinding) {
 
         Log.d("STATEMENTS"," Esta na subscribe")
         viewModel.statements.observe(viewLifecycleOwner) { result ->
             Log.d("STATEMENTS","-->"+result.list!!.size)
             adapter.submitList(result.list)
+        }
+
+        viewModel.clientInfo.observe(viewLifecycleOwner) { result ->
+            Log.d("STATEMENTS","AQUI-->"+result)
+            binding.clientNameTextView.text = result.name
+            // Variáveis BankAccount e Agency estão com os conteúdos trocados no JSON da API
+            // Trocado de posição aqui para corrigir o problema
+            binding.accountTextView.text =
+                "${result.bankAccount} / ${PresentationUtils.getBankAccountFormated(result.agency)}"
+            binding.balanceTextView.text = PresentationUtils.getFormatedCurrency(result.balance!!)
         }
 
     }
@@ -76,5 +88,10 @@ class StatementFragment : Fragment() {
                 override fun OnClick() {}
             })
             .build()
+    }
+
+    override fun onClose(){
+        Log.d("STATEMENTS","ONCLOSE() na fragment")
+        activity!!.finish()
     }
 }

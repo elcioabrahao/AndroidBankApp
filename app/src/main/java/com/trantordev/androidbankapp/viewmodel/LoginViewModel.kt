@@ -51,6 +51,7 @@ class LoginViewModel internal constructor(private val loginR: LoginRepository
         runBlocking {
             val loginResponse = loginR.getUserInfo(
                 Login(
+                    0,
                     user!!,
                     password!!
                 )

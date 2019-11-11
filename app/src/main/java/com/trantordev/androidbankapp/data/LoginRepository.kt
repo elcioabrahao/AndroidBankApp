@@ -43,6 +43,7 @@ class LoginRepository private constructor(
                 if(response.clientAccountInfo != null){
                     GlobalScope.async {
                         saveClientrInfo(response.clientAccountInfo)
+                        login.userId=response.clientAccountInfo.userId
                         saveUserInfo(login)
                     }
                     loginResponse.value = "OK"
@@ -60,14 +61,8 @@ class LoginRepository private constructor(
 
     }
 
-    suspend fun authenticate(login: Login): ClientAccountInfoResponse {
-
-        Log.d("STATEMENTS","ANTES CHAMADA" )
-        val c: ClientAccountInfoResponse =  apiServices.service.authenticate(login.user, login.password)
-        Log.d("STATEMENTS","DEPOIS CHAMADA"+c.toString() )
-        return c
-    }
-
+    suspend fun authenticate(login: Login)
+            =  apiServices.service.authenticate(login.user, login.password)
 
     suspend fun saveUserInfo(login: Login) {
         GlobalScope.async {

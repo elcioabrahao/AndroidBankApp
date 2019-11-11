@@ -9,10 +9,10 @@ import com.google.gson.annotations.SerializedName
     tableName = "client"
 )
 
-data class ClientAccountInfo (
+class ClientAccountInfo (
 
     @SerializedName("userId")
-    var userId: Int? = 0,
+    var userId: Long = 0,
     @SerializedName("name")
     var name: String? = null,
     @SerializedName("bankAccount")

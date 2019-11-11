@@ -31,17 +31,6 @@ class StatementAdapter: ListAdapter<AccountStatement, RecyclerView.ViewHolder>(S
             }
         }
 
-//        private fun navigateToPlant(
-//            plant: Plant,
-//            it: View
-//        ) {
-//            val direction =
-//                HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(
-//                    plant.plantId
-//                )
-//            it.findNavController().navigate(direction)
-//        }
-
         fun bind(item: AccountStatement) {
             binding.apply {
                 statement = item
@@ -54,10 +43,10 @@ class StatementAdapter: ListAdapter<AccountStatement, RecyclerView.ViewHolder>(S
 private class StatementDiffCallback : DiffUtil.ItemCallback<AccountStatement>() {
 
     override fun areItemsTheSame(oldItem: AccountStatement, newItem: AccountStatement): Boolean {
-        return oldItem.title == newItem.title
+        return oldItem.desc.equals(newItem.desc)
     }
 
     override fun areContentsTheSame(oldItem: AccountStatement, newItem: AccountStatement): Boolean {
-        return oldItem == newItem
+        return oldItem.equals(newItem)
     }
 }

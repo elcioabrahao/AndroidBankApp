@@ -1,9 +1,7 @@
 package com.trantordev.androidbankapp.data
 
-import android.util.Log
 import com.trantordev.androidbankapp.data.database.ClientAccountInfoDao
 import com.trantordev.androidbankapp.data.database.LoginDao
-import com.trantordev.androidbankapp.data.model.ClientAccountInfo
 import com.trantordev.androidbankapp.data.network.ApiServices
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -16,19 +14,15 @@ class StatementRepository private constructor(
 
     suspend fun getStatements(userId: Long) = apiServices.service.getClientStatements("statements/$userId")
 
-    suspend fun getCurrentLoggedUser(): Long =   GlobalScope.async {
+    suspend fun getCurrentLoggedUser() =   GlobalScope.async {
             loginDao.getLogedUser().userId
         }.await()
 
-    suspend fun getClientInfo(userId: Long): ClientAccountInfo =   GlobalScope.async {
+    suspend fun getClientInfo(userId: Long) = GlobalScope.async {
         clientAccountInfoDao.getAccountInfo(userId)
     }.await()
 
-    suspend fun getClientInfo(): ClientAccountInfo {
-        val c: ClientAccountInfo = getClientInfo(getCurrentLoggedUser())
-        Log.d("STATEMENTS","info: "+c.toString())
-        return c
-    }
+    suspend fun getClientInfo() = getClientInfo(getCurrentLoggedUser())
 
     companion object {
         @Volatile

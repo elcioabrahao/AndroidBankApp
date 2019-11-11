@@ -15,16 +15,14 @@
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:layout_margin="4dp"
+    android:layout_marginBottom="4dp"
     android:onClick="@{clickListener}"
-    android:layout_marginBottom="16dp"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_margin="4dp">
+        android:layout_height="80dp">
 
         <TextView
             style="@style/HelveticaNeue"
@@ -46,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:text="@{statement.date}"
+            android:text="@{statement.formatedDate}"
             android:textSize="12sp"
             android:textColor="@color/statement_gray"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="8dp"
-            android:text="@{statement.value.toString()}"
+            android:text="@{statement.formatedCurrency}"
             android:textSize="20sp"
             android:textColor="@color/statement_dark_gray"
             app:layout_constraintBottom_toBottomOf="parent"

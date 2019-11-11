@@ -47,7 +47,6 @@ class LoginFragment : Fragment(), LoginListener {
             Log.i(TAG, "Login response via Live Data = $it")
             val intent = Intent(this.activity, StatementActivity::class.java)
             startActivity(intent)
-            this.activity!!.finish()
 
         })    }
 

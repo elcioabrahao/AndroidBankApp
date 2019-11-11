@@ -13,7 +13,7 @@ import com.trantordev.androidbankapp.data.model.ClientAccountInfo
 import com.trantordev.androidbankapp.util.DATABASE_NAME
 import com.trantordev.androidbankapp.workers.UserSeedingDatabaseWorker
 
-@Database(entities = [Login::class, ClientAccountInfo::class], version = 1, exportSchema = false)
+@Database(entities = [Login::class, ClientAccountInfo::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun loginDao(): LoginDao
@@ -45,6 +45,7 @@ abstract class AppDatabase : RoomDatabase() {
                             WorkManager.getInstance(context).enqueue(request)
                         }
                     })
+                    .fallbackToDestructiveMigration()
                     .build()
         }
     }
