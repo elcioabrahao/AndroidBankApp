@@ -14,6 +14,8 @@ class StatementViewModel internal constructor(
 
     var statementListener: StatementListener? = null
     var userId: Long = 1
+
+
     val statements = liveData(Dispatchers.IO) {
         val retrivedStatements = statementRepository.getStatements(userId)
         emit(retrivedStatements)
@@ -21,13 +23,11 @@ class StatementViewModel internal constructor(
 
     val clientInfo = liveData(Dispatchers.IO){
         val retrivedClientAccountInfo = statementRepository.getClientInfo()
-        Log.d("STATEMENTS","Viewmodel-->"+retrivedClientAccountInfo)
         emit(retrivedClientAccountInfo)
     }
 
     fun onLogoutIconClick(view: View){
-        Log.d("STATEMENTS","ONCLOSE() na view")
-        statementListener!!.onClose()
+       statementListener!!.onClose()
     }
 
 

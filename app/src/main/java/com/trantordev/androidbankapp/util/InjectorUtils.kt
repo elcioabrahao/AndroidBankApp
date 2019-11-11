@@ -8,7 +8,6 @@ import com.trantordev.androidbankapp.data.StatementRepository
 import com.trantordev.androidbankapp.viewmodel.LoginViewModelFactory
 import com.trantordev.androidbankapp.viewmodel.StatementViewModelFactory
 
-
 object InjectorUtils {
 
 

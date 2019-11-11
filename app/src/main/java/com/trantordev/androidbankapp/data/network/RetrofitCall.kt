@@ -5,7 +5,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class RetrofitCall {
 
     private var BASE_URL: String = "https://bank-app-test.herokuapp.com/api/"

@@ -1,6 +1,5 @@
 package com.trantordev.androidbankapp.data
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.trantordev.androidbankapp.data.database.ClientAccountInfoDao
@@ -11,9 +10,6 @@ import com.trantordev.androidbankapp.data.model.Login
 import com.trantordev.androidbankapp.data.network.ApiServices
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class LoginRepository private constructor(
     private val loginDao: LoginDao,
@@ -32,7 +28,7 @@ class LoginRepository private constructor(
         val loginResponse = MutableLiveData<String>()
 
         if (isCached(login) == true) {
-            loginResponse.value = "LOGGED DATABASE"
+            loginResponse.value = "OK"
             return loginResponse
         } else {
 
@@ -77,7 +73,6 @@ class LoginRepository private constructor(
             clientAccountInfoDao.deleteAll()
             clientAccountInfoDao.insertClientAccountInfo(clientAccountInfo)
             val clientAccountInfo = clientAccountInfoDao.getAccountInfo(1)
-            Log.d("STATEMENTS","CLIENTE GRAVADO: "+clientAccountInfo.toString())
         }.await()
     }
 

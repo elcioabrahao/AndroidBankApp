@@ -62,9 +62,5 @@ class LoginViewModel internal constructor(private val loginR: LoginRepository
                 loginListener?.onFailure(R.string.api_authnentication_error)
             }
         }
-
-
     }
-
-
 }

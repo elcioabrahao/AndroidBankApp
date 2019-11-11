@@ -6,7 +6,6 @@ import android.os.Bundle
 import com.trantordev.androidbankapp.R
 import com.trantordev.androidbankapp.databinding.ActivityLoginBinding
 
-
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

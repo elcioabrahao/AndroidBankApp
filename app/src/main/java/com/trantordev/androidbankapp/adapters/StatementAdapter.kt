@@ -25,9 +25,7 @@ class StatementAdapter: ListAdapter<AccountStatement, RecyclerView.ViewHolder>(S
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
-//                binding.statement?.let { plant ->
-//                    navigateToPlant(plant, it)
-//                }
+            // On click não implementado propositalmente
             }
         }
 
